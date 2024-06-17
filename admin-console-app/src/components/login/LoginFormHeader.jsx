@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import useSystem from '../.././hooks/useSystem';
 
 const LoginHeader = () => {
-  const [systemName, setSystemTem] = useState('')
+  const [systemName, setSystemName] = useState('')
   const { getSystem } = useSystem();
 
   useEffect(() => {
@@ -10,9 +10,7 @@ const LoginHeader = () => {
   }, [])
 
   const getSystemName = () => {
-    getSystem().then(res => {
-      setSystemTem(res.title)
-    })
+    getSystem().then((data) => { setSystemName(data.title) })
   }
   return (
     <>

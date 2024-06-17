@@ -7,7 +7,6 @@ const apis = [
     url: "/api/v1/login",
     type: "post",
     response: ({ url, type, body }) => {
-      console.log(body);
       const res = JSON.parse(body);
       if (res.userName === "tom" && res.pwd === "123") {
         console.log("true");
@@ -15,7 +14,10 @@ const apis = [
           succ: true,
           code: "",
           msg: "",
-          data: Random.guid(32),
+          data: {
+            token: Random.guid(32),
+            expire: 60 * 1000, // 60秒
+          },
         };
       } else {
         return {
@@ -25,6 +27,18 @@ const apis = [
           data: "",
         };
       }
+    },
+  },
+  {
+    url: "/api/v1/logout",
+    type: "post",
+    response: ({ url, type, body }) => {
+      return {
+        succ: true,
+        code: "",
+        msg: "",
+        data: null,
+      };
     },
   },
 ];

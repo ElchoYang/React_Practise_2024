@@ -1,13 +1,9 @@
-import request from ".././utils/APIRequest";
+import useHttp from "./useHttp";
 
 const useSystem = () => {
+  const { post } = useHttp();
   const getSystem = async () => {
-    const res = await request.post("/api/v1/system", null);
-    if (res.succ) {
-      return Promise.resolve(res.data);
-    } else {
-      return Promise.reject(res.message);
-    }
+    return await post("/api/v1/system", {}, null);
   };
 
   return {

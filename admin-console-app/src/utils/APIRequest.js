@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const request = axios.create({
+const instance = axios.create({
   baseURL: "",
   timeout: 5000,
   timeoutErrorMessage: "timeout",
 });
 
 // 添加请求拦截器
-request.interceptors.request.use(
+instance.interceptors.request.use(
   (config) => {
     console.log("request:", config);
 
@@ -30,16 +30,16 @@ request.interceptors.request.use(
 );
 
 // 添加响应拦截器
-request.interceptors.response.use(
+instance.interceptors.response.use(
   (res) => {
     console.log("response:", res);
 
     if (!res.data.succ) {
       // handle error message
-      console.error(res.data.message);
+      console.error(res.data.msg);
     }
 
-    return res.data;
+    return res;
   },
   (error) => {
     return Promise.reject(error);
@@ -49,4 +49,4 @@ request.interceptors.response.use(
   }
 );
 
-export default request;
+export default instance;
