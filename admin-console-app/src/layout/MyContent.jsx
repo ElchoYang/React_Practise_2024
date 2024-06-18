@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
-import { Outlet } from "react-router-dom";
-import { Layout } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation } from "react-router-dom";
+import { Layout, Breadcrumb } from 'antd';
+import { useDesignToken } from "../theme/hooks/useDesignToken";
 const { Content } = Layout;
 
-const MyContent = () => {
+const MyContent = (props) => {
+
+    const { colorBgContainer, borderRadiusLG } = useDesignToken();
+    const [breadcrumbItem, setBreadcrumbItem] = useState([])
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log('location', location)
+        const arr = location.pathname.split('/').map(p => {
+            return { 'title': p }
+        })
+
+        setBreadcrumbItem(arr)
+    }, [location])
+
     return (
         <>
-            <Content style={{ margin: '0 16px' }}  >
+            <Breadcrumb style={{ margin: '16px 0' }} items={breadcrumbItem} />
+            <Content style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+            }} >
                 <Outlet></Outlet>
             </Content>
         </>

@@ -20,13 +20,9 @@ function getItem(label, key, icon, children) {
     };
 }
 const items = [
-    getItem('Home', '/home', <PieChartOutlined />),
+    getItem('Home', '/home', <FileOutlined />),
     getItem('About', '/home/about', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
-    ]),
+    getItem('Dashboard', '/home/dashboard', <PieChartOutlined />,),
 ];
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);

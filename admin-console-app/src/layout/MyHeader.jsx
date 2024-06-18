@@ -1,30 +1,26 @@
 import useSecurity from '../hooks/useSecurity.js'
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
 import { Layout, theme, Button } from 'antd';
+import { HEADER_HEIGHT } from './config'
+import AccountDropdown from './../components/AccountDropdown'
+import { useDesignToken } from "../theme/hooks/useDesignToken";
+
 const { Header } = Layout;
 
 const MyHeader = () => {
 
-  const { logout } = useSecurity()
-  const navigate = useNavigate()
+  const { colorBgElevated, colorBgContainer, colorTextBase } = useDesignToken();
 
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
-
-  const handelLogout = async () => {
-    await logout()
-    navigate('/', { replace: true })
+  const headerStyle = {
+    position: 'fixed',
+    borderBottom: '',
+    backgroundColor: colorBgElevated,
+    right: '0px',
+    left: 'auto',
+    width: '100vw',
   }
+
 
   return (
     <>
@@ -33,7 +29,20 @@ const MyHeader = () => {
         alignItems: 'center',
         display: 'flex',
       }}  >
-        <Button type="primary" onClick={handelLogout} >Logout</Button>
+
+        <div
+          className="flex items-center justify-between flex-grow px-4 text-gray xl:px-6 2xl:px-10"
+          style={{
+            height: HEADER_HEIGHT,
+          }}
+        >
+          <div className="flex items-baseline">
+
+          </div>
+          <div className='flex'>
+            <AccountDropdown />
+          </div>
+        </div>
       </Header >
     </>
   )

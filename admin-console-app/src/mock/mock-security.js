@@ -16,7 +16,7 @@ const apis = [
           msg: "",
           data: {
             token: Random.guid(32),
-            expire: 60 * 1000, // 60秒
+            expire: 300, // 秒
           },
         };
       } else {

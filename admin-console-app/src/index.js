@@ -6,13 +6,24 @@ import reportWebVitals from "./reportWebVitals";
 import "./mock";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
+// tailwind css
+import "./theme/index.css";
+import { ConfigProvider, theme } from "antd";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>
-  <RouterProvider router={router} />
+  <ConfigProvider
+    theme={{
+      token: {
+        algorithm: theme.darkAlgorithm,
+      },
+    }}
+  >
+    <RouterProvider router={router} />
+  </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

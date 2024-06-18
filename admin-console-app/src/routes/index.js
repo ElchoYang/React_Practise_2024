@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginView from "./../views/LoginView";
 import HomeView from "./../views/HomeView";
 import AboutView from "./../views/AboutView";
+import DashboardView from "./../views/DashboardView";
 import NotFoundView from "./../views/NotFoundView";
 import MyLayout from "./../layout/MyLayout";
 import { ProtectedRoute } from "./../routes/ProtectedRoute";
@@ -23,15 +24,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomeView />,
+        element: (
+          <ProtectedRoute>
+            <HomeView />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "about",
-        element: <AboutView />,
+        element: (
+          <ProtectedRoute>
+            <AboutView />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "dashboard",
+        element: (
+          <ProtectedRoute>
+            <DashboardView />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "*",
-        element: <NotFoundView />,
+        element: (
+          <ProtectedRoute>
+            <NotFoundView />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

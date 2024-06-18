@@ -1,10 +1,6 @@
-import { useContext } from "react";
 import instance from "../utils/APIRequest";
-import { SpinContext } from "./../components/GlobalSpin";
 
 const useHttp = () => {
-  const { setSpinning } = useContext(SpinContext);
-
   const request = (url, headers, method, data) => {
     return new Promise((resolve, reject) => {
       instance
