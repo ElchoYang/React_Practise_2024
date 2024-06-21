@@ -23,6 +23,11 @@ const items = [
     getItem('Home', '/home', <FileOutlined />),
     getItem('About', '/home/about', <DesktopOutlined />),
     getItem('Dashboard', '/home/dashboard', <PieChartOutlined />,),
+    getItem('Post', 'post1', <PieChartOutlined />,
+        [
+            getItem('Submit', '/home/post/submit'),
+            getItem('View', '/home/post/view'),
+        ]),
 ];
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);

@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import "./mock";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
+import store from "./store";
+import { Provider } from "react-redux";
+
 // tailwind css
 import "./theme/index.css";
 import { ConfigProvider, theme } from "antd";
@@ -22,7 +25,9 @@ root.render(
       },
     }}
   >
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </ConfigProvider>
 );
 

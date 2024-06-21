@@ -19,11 +19,10 @@ const LoginView = () => {
             setSpinning(true)
             await login()
             navigate('/home', { replace: true })
-            setSpinning(false)
-
         } catch {
-            setSpinning(false)
             setErrorMsg({ color: 'red', message: '登录失败！' })
+        } finally {
+            setSpinning(false)
         }
     }
 

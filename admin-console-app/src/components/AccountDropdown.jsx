@@ -1,18 +1,23 @@
 import { Dropdown } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import logo from '../logo.svg'
 import useSecurity from '../hooks/useSecurity'
+
 
 const AccountDropdown = () => {
 
     const { logout } = useSecurity()
-
+    const navaigate = useNavigate()
     const items = [
         {
-            label: (
-                <NavLink to="https://www.qq.com" target="_blank">最新新闻</NavLink>
-            ),
-            key: "1",
+            label:
+                <button className="font-bold text-primary"
+                    onClick={() => { navaigate("/home/userinfo") }}>
+                    用户信息
+                </button>
+            ,
+            key: "1"
+
         },
         { type: 'divider' },
         {

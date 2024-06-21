@@ -2,7 +2,8 @@ import Mock from "mockjs";
 import securityApis from "./mock-security";
 import systemApis from "./mock-system";
 import dashboardApis from "./mock-dashboard";
-const mocks = [...securityApis, ...systemApis, ...dashboardApis];
+import postApis from "./mock-post";
+const mocks = [...securityApis, ...systemApis, ...dashboardApis, ...postApis];
 
 Mock.setup({
   timeout: "200-300",
