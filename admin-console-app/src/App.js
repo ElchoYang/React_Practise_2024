@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import LoginView from "./views/LoginView";
+import LoginView from "./views/login/LoginView";
 
 function App() {
   return (

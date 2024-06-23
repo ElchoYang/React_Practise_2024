@@ -2,13 +2,14 @@ import SideBar from "./SideBar";
 import MyHeader from "./MyHeader";
 import MyContent from "./MyContent";
 import MyFooter from "./MyFooter";
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
+import { useSelector, useDispatch, useStore } from "react-redux";
 
 const MyLayout = () => {
-
+    const spinnig = useSelector((state) => state.spinner.spinning);
     return (
         <>
-
+            <Spin spinning={spinnig} fullscreen />;
             <Layout style={{
                 minHeight: '100vh',
             }}>

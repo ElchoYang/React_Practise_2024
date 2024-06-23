@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch, useStore } from "react-redux";
-import { add, list } from "./../store/slice/PosterSlice";
+import { add, list } from "../store/slice/PostSlice";
 
 import useHttp from "./useHttp";
 

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import PostReducer from "./slice/PosterSlice";
+import PostReducer from "./slice/PostSlice";
+import SpinReducer from "./slice/SpinSlice";
 
 export default configureStore({
   reducer: {
-    Poster: PostReducer,
+    poster: PostReducer,
+    spinner: SpinReducer,
   },
 });

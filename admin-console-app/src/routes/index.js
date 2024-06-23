@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import LoginView from "./../views/LoginView";
+import LoginView from "./../views/login/LoginView";
 import HomeView from "./../views/HomeView";
 import AboutView from "./../views/AboutView";
 import DashboardView from "./../views/DashboardView";

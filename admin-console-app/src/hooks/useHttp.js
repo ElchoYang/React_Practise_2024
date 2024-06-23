@@ -1,8 +1,13 @@
 import instance from "../utils/APIRequest";
-
+import { useSelector, useDispatch, useStore } from "react-redux";
+import { startSpinning, endSpinning } from "../store/slice/SpinSlice";
 const useHttp = () => {
+  const dispatch = useDispatch();
+  const store = useStore();
   const request = (url, headers, method, data) => {
     return new Promise((resolve, reject) => {
+      if (store.getState().spinner.count <= 0) dispatch(startSpinning());
+
       instance
         .request({
           url: url,
@@ -19,6 +24,9 @@ const useHttp = () => {
         })
         .catch((err) => {
           reject({ code: "ERR_0000", message: "System Error" });
+        })
+        .finally(() => {
+          if (store.getState().spinner.count >= 1) dispatch(endSpinning());
         });
     });
   };

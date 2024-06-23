@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const PosterSlice = createSlice({
+const PostSlice = createSlice({
   name: "post",
   initialState: {
     value: [],
@@ -13,6 +13,6 @@ const PosterSlice = createSlice({
   },
 });
 
-export const { add, list } = PosterSlice.actions;
+export const { add, list } = PostSlice.actions;
 
-export default PosterSlice.reducer;
+export default PostSlice.reducer;

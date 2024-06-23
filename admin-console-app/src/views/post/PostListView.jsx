@@ -5,7 +5,7 @@ import { useSelector, useDispatch, useStore } from "react-redux"
 
 const PostListView = () => {
     const store = useStore()
-    var data = store.getState().Poster.value
+    var data = store.getState().poster.value
     console.log('store = ', data)
 
     return (
