@@ -5,6 +5,7 @@ import { Layout, theme, Button } from 'antd';
 import { HEADER_HEIGHT } from './config'
 import AccountDropdown from './../components/AccountDropdown'
 import { useDesignToken } from "../theme/hooks/useDesignToken";
+import SystemName from './../components/SystemName.jsx'
 
 const { Header } = Layout;
 
@@ -38,6 +39,7 @@ const MyHeader = () => {
         >
           <div className="flex items-baseline">
 
+            <SystemName />
           </div>
           <div className='flex'>
             <AccountDropdown />

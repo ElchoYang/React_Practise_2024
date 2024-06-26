@@ -13,7 +13,6 @@ const MyContent = (props) => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log('location', location)
         const arr = location.pathname.split('/').map(p => {
             return { 'title': p }
         })
@@ -32,11 +31,11 @@ const MyContent = (props) => {
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
             }} >
-                <Scrollbar style={{
+                {/* <Scrollbar style={{
                     height: 'calc(100vh - 70px)',
-                }}>
-                    <Outlet></Outlet>
-                </Scrollbar>
+                }}> */}
+                <Outlet></Outlet>
+                {/* </Scrollbar> */}
             </Content>
         </>
     )

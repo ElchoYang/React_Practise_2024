@@ -12,7 +12,7 @@ import { Provider } from "react-redux";
 // tailwind css
 import "./theme/index.css";
 import { ConfigProvider, theme } from "antd";
-
+import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
@@ -26,7 +26,10 @@ root.render(
     }}
   >
     <Provider store={store}>
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </ConfigProvider>
 );

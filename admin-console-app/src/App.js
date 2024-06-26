@@ -1,13 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
-import LoginView from "./views/login/LoginView";
+import defaultRouter from "./routes/index";
+import { useRoutes } from "react-router-dom";
+import { memo } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <LoginView />
-    </div>
-  );
-}
+const App = memo(() => {
+  const routers = defaultRouter;
+
+  return <>{useRoutes(routers)}</>;
+});
 
 export default App;

@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react'
-import LoginHeader from './LoginFormHeader.jsx'
+import SystemName from './../../components/SystemName.jsx'
 import SubmitMessage from './SubmitMessage.jsx'
 import useSecurity from '../../hooks/useSecurity.js'
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ const LoginView = () => {
 
             <Row gutter={16}>
                 <Col span={8} offset={8}>
-                    <Card title={<LoginHeader />} bordered={false} className='LoginCard'>
+                    <Card title={<SystemName />} bordered={false} className='LoginCard'>
                         <Form className='Loginform'
                             labelCol={{
                                 span: 8,

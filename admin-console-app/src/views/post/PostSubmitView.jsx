@@ -1,39 +1,33 @@
-import React, { useState, createContext, useContext } from 'react'
-import { Spin, Button, Input, Form, Row, Col, Card, Space } from 'antd';
+import React, { useState, createContext, useEffect } from 'react'
+import { Button, Input, Form, Drawer, Space } from 'antd';
 import usePost from './../../hooks/usePost.js'
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 const PostSubmitView = () => {
 
-    const navigate = useNavigate()
+    const { article, setArticle, closeForm, handelSubmit } = usePost();
 
-    const { article, setArticle, submit } = usePost();
+    const poster = useSelector((state) => state.poster)
 
-    const [spinning, setSpinning] = useState(false);
+    useEffect(() => {
+        setArticle(poster.currentPost)
+    }, [poster.currentPost])
 
     const handelChangeTitle = (e) => {
         setArticle({
+            id: article.id,
             title: e.target.value,
             content: article.content
         })
     }
     const handelChangeContent = (e) => {
         setArticle({
+            id: article.id,
             title: article.title,
             content: e.target.value
         })
     }
-    const handelSubmit = async (e) => {
-        try {
-            setSpinning(true)
-            await submit();
-            navigate('/home/post/view', { replace: true })
-        } catch {
-            // promotes error
-        } finally {
-            setSpinning(false)
-        }
-    }
+
 
     const tailLayout = {
         wrapperCol: {
@@ -43,28 +37,33 @@ const PostSubmitView = () => {
     };
     return (
         <>
-            <Spin spinning={spinning} fullscreen />
-            <Form className='PostForm'
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 14,
-                }}
-                layout="horizontal">
-                <Form.Item label="Title">
-                    <Input type='text' name="title" onChange={(e) => { handelChangeTitle(e) }} />
-                </Form.Item>
-                <Form.Item label="Content">
-                    <Input type="text" name="content" onChange={(e) => { handelChangeContent(e) }} />
-                </Form.Item>
+            <Drawer title="Add Your Post" onClose={closeForm} open={poster.isOpen}>
+                <Form className='PostForm'
+                    labelCol={{
+                        span: 8,
+                    }}
+                    wrapperCol={{
+                        span: 14,
+                    }}
+                    layout="horizontal">
+                    {/* <Form.Item label="Id">
+                        <Input type='text' name="id" value={article?.id} />
+                    </Form.Item> */}
+                    <Form.Item label="Title">
+                        <Input type='text' name="title" value={article?.title} onChange={(e) => { handelChangeTitle(e) }} />
+                    </Form.Item>
+                    <Form.Item label="Content">
+                        <Input type="text" name="content" value={article?.content} onChange={(e) => { handelChangeContent(e) }} />
+                    </Form.Item>
 
-                <Form.Item {...tailLayout}>
-                    <Space>
-                        <Button type='primary' onClick={handelSubmit} >Submit</Button>
-                    </Space>
-                </Form.Item>
-            </Form>
+                    <Form.Item {...tailLayout}>
+                        <Space>
+                            <Button type='primary' onClick={handelSubmit} >Submit</Button>
+                        </Space>
+                    </Form.Item>
+                </Form>
+
+            </Drawer>
 
         </>
     )

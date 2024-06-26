@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import useSystem from '../.././hooks/useSystem';
+import useSystem from '../hooks/useSystem';
 
 const LoginHeader = () => {
   const [systemName, setSystemName] = useState('')
@@ -10,7 +10,8 @@ const LoginHeader = () => {
   }, [])
 
   const getSystemName = () => {
-    getSystem().then((data) => { setSystemName(data.title) })
+    if (systemName == '')
+      getSystem().then((data) => { setSystemName(data.title) })
   }
   return (
     <>

@@ -9,8 +9,6 @@ const instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(
   (config) => {
-    console.log("request:", config);
-
     try {
       if (localStorage.getItem("token") != null) {
         config.headers.token = localStorage.getItem("token");

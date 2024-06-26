@@ -5,14 +5,13 @@ import HomeView from "./../views/HomeView";
 import AboutView from "./../views/AboutView";
 import DashboardView from "./../views/DashboardView";
 import UserInfoView from "./../views/userInfo/UserInfoView";
-import PostSubmitView from "./../views/post/PostSubmitView";
-import PostListView from "./../views/post/PostListView";
+import PostView from "./../views/post/PostView";
 import NotFoundView from "./../views/NotFoundView";
 import MyLayout from "./../layout/MyLayout";
 import { ProtectedRoute } from "./../routes/ProtectedRoute";
 
 // 创建路由
-const router = createBrowserRouter([
+const defaultRouter = [
   {
     path: "/",
     element: <LoginView />,
@@ -58,21 +57,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "post/submit",
+        path: "post",
         element: (
           <ProtectedRoute>
-            <PostSubmitView />
+            <PostView />
           </ProtectedRoute>
         ),
       },
-      {
-        path: "post/view",
-        element: (
-          <ProtectedRoute>
-            <PostListView />
-          </ProtectedRoute>
-        ),
-      },
+
       {
         path: "*",
         element: (
@@ -87,6 +79,6 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFoundView />,
   },
-]);
+];
 
-export default router;
+export default defaultRouter;
