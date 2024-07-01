@@ -11,7 +11,7 @@ import MyLayout from "./../layout/MyLayout";
 import { ProtectedRoute } from "./../routes/ProtectedRoute";
 
 // 创建路由
-const defaultRouter = [
+export const defaultRouter = [
   {
     path: "/",
     element: <LoginView />,
@@ -64,12 +64,32 @@ const defaultRouter = [
           </ProtectedRoute>
         ),
       },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFoundView />,
+  },
+];
 
+export const baseRouters = [
+  {
+    path: "/",
+    element: <LoginView />,
+  },
+  {
+    path: "/home",
+    element: (
+      <ProtectedRoute>
+        <MyLayout />
+      </ProtectedRoute>
+    ),
+    children: [
       {
-        path: "*",
+        path: "",
         element: (
           <ProtectedRoute>
-            <NotFoundView />
+            <HomeView />
           </ProtectedRoute>
         ),
       },
@@ -81,4 +101,60 @@ const defaultRouter = [
   },
 ];
 
-export default defaultRouter;
+export const functionalRouters = [
+  {
+    meta: {
+      name: "about",
+    },
+    path: "about",
+    element: (
+      <ProtectedRoute>
+        <AboutView />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    meta: {
+      name: "userinfo",
+    },
+    path: "userinfo",
+    element: (
+      <ProtectedRoute>
+        <UserInfoView />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    meta: {
+      name: "dashboard",
+    },
+    path: "dashboard",
+    element: (
+      <ProtectedRoute>
+        <DashboardView />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    meta: {
+      name: "post",
+    },
+    path: "post",
+    element: (
+      <ProtectedRoute>
+        <PostView />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    meta: {
+      name: "userinfo",
+    },
+    path: "userinfo",
+    element: (
+      <ProtectedRoute>
+        <UserInfoView />
+      </ProtectedRoute>
+    ),
+  },
+];

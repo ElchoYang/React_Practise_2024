@@ -37,7 +37,7 @@ const PostSubmitView = () => {
     };
     return (
         <>
-            <Drawer title="Add Your Post" onClose={closeForm} open={poster.isOpen}>
+            <Drawer title="Save Your Post" onClose={closeForm} open={poster.isOpen}>
                 <Form className='PostForm'
                     labelCol={{
                         span: 8,

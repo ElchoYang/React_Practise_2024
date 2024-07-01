@@ -1,31 +1,49 @@
 import mockjs from "mockjs";
 
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-
-const items = [
-  getItem("Home", "/home"),
-  getItem("About", "/home/about"),
-  getItem("Dashboard", "/home/dashboard"),
-  getItem("Post", "/home/post/"),
-];
-
 const apis = [
   {
-    url: "/api/v1/routes",
+    url: " /api/v1/userInfo",
     type: "post",
     response: ({ url, type, body }) => {
       return {
         succ: true,
         code: "",
         msg: "",
-        data: items,
+        data: {
+          name: "tom",
+          menus: [
+            {
+              label: "Home",
+              key: "/home",
+              iconName: "MailOutlined",
+              rkey: 'home'
+            },
+            {
+              label: "About",
+              key: "/home/about",
+              iconName: "AppstoreOutlined",
+              rkey: 'about'
+            },
+            {
+              label: "Dashboard",
+              key: "/home/dashboard",
+              iconName: "PieChartOutlined",
+              rkey: 'dashboard'
+            },
+            {
+              label: "Post",
+              key: "/home/post",
+              iconName: "FileOutlined",
+              rkey: 'post'
+            },
+            {
+              label: "User Info",
+              key: "/home/userinfo",
+              iconName: "UserOutlined",
+              rkey: 'userinfo'
+            },
+          ],
+        },
       };
     },
   },

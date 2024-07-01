@@ -18,11 +18,18 @@ const AccountDropdown = () => {
             ,
             key: "1"
 
+        }
+        ,
+        { type: 'divider' },
+        {
+            label: <button className="font-bold text-warning">主题切换</button>,
+            key: "2",
+            onClick: logout
         },
         { type: 'divider' },
         {
             label: <button className="font-bold text-warning">登出</button>,
-            key: "2",
+            key: "3",
             onClick: logout
         }
     ]

@@ -11,7 +11,7 @@ instance.interceptors.request.use(
   (config) => {
     try {
       if (localStorage.getItem("token") != null) {
-        config.headers.token = localStorage.getItem("token");
+        config.headers['Authorization'] = localStorage.getItem("token");
       }
     } catch (e) {
       console.error(e);
